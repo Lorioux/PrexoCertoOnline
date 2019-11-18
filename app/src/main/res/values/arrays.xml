@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="units">
+        <item>Units</item>
+        <item>Kg</item>
+        <item>Gr</item>
+        <item>Ltr</item>
+        <item>Pcs</item>
+        <item>Scs</item>
+        <item>Cm</item>
+        <item>m^3</item>
+        <item>m^2</item>
+        <item>Mtrs</item>
+    </string-array>
+
+    <string-array name="currency">
+        <item>EUR</item>
+        <item>MT</item>
+        <item>USD</item>
+    </string-array>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/userCatogue"
+        android:icon="@drawable/ic_list_24px"
+        android:title="My Store"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/storePromo"
+        android:icon="@android:drawable/ic_popup_reminder"
+        android:title="My Ads" />
+    <item
+        android:id="@+id/userProfile"
+        android:icon="@drawable/ic_person_24px"
+        android:title="My Profile"
+        app:showAsAction="never" />
+</menu>
