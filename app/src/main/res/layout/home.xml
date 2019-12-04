@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/apk/tools"
     android:layout_width="match_parent"
@@ -10,7 +10,7 @@
 
     <!--TODO:
      00::Criar um campo para mostrar a informação de log-->
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="280dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -25,13 +25,13 @@
             android:padding="8dp"
             android:text=""
             android:textSize="18sp" />
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <include
         android:id="@+id/main._appBar"
         layout="@layout/app_bar" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/main._fab_locate"
         android:layout_width="56dp"
         android:layout_height="56dp"
@@ -39,4 +39,4 @@
         android:layout_margin="16dp"
         android:src="@android:drawable/ic_dialog_map" />
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

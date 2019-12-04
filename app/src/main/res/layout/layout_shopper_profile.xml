@@ -1,6 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/shopperProfileHeader"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:text="User profile information"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_ShopperTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="Title:"
+        android:textAlignment="viewEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_ManagerTitle"
+        app:layout_constraintEnd_toEndOf="@+id/label_ShopperPhone"
+        app:layout_constraintStart_toStartOf="@+id/label_ShopperPhone"
+        app:layout_constraintTop_toTopOf="@+id/spinner_ManagerTitle" />
+
+    <Spinner
+        android:id="@+id/spinner_ManagerTitle"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:dropDownWidth="wrap_content"
+        android:entries="@array/user_profile_titles"
+        app:layout_constraintEnd_toEndOf="@+id/shopperProfileHeader"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/label_ShopperTitle"
+        app:layout_constraintTop_toBottomOf="@+id/shopperProfileHeader" />
+
+    <TextView
+        android:id="@+id/label_ShopperName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="First name:"
+        android:textAlignment="viewEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/managerName"
+        app:layout_constraintEnd_toEndOf="@+id/label_ShopperPhone"
+        app:layout_constraintStart_toStartOf="@+id/label_ShopperPhone"
+        app:layout_constraintTop_toTopOf="@+id/managerName" />
+
+    <EditText
+        android:id="@+id/managerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/shopperProfileHeader"
+        app:layout_constraintStart_toEndOf="@+id/label_ShopperName"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_ManagerTitle" />
+
+    <TextView
+        android:id="@+id/label_ShopperSurname"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="Last name"
+        android:textAlignment="viewEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/managerSurname"
+        app:layout_constraintEnd_toEndOf="@+id/label_ShopperPhone"
+        app:layout_constraintStart_toStartOf="@+id/label_ShopperPhone"
+        app:layout_constraintTop_toTopOf="@+id/managerSurname" />
+
+    <EditText
+        android:id="@+id/managerSurname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Surname"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/managerName"
+        app:layout_constraintStart_toEndOf="@+id/label_ShopperSurname"
+        app:layout_constraintTop_toBottomOf="@+id/managerName" />
+
+    <TextView
+        android:id="@+id/label_ShopperPhone"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="Phone number:"
+        android:textAlignment="viewEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/managerPhone"
+        app:layout_constraintEnd_toEndOf="@+id/label_StoreCity"
+        app:layout_constraintStart_toStartOf="@+id/shopperProfileHeader"
+        app:layout_constraintTop_toTopOf="@+id/managerPhone" />
+
+    <EditText
+        android:id="@+id/managerPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPhonetic"
+        android:text="(+258)"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/managerName"
+        app:layout_constraintStart_toEndOf="@+id/label_ShopperPhone"
+        app:layout_constraintTop_toBottomOf="@+id/managerSurname" />
+
+    <EditText
+        android:id="@+id/managerEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="customer@example.com"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/managerName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/label_ShopperEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editText11" />
+
+    <TextView
+        android:id="@+id/label_ShopperEmail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="E-mail:"
+        android:textAlignment="viewEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/managerEmail"
+        app:layout_constraintEnd_toEndOf="@+id/label_ShopperPhone"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/label_ShopperPhone"
+        app:layout_constraintTop_toTopOf="@+id/managerEmail"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/shopperProfileSaver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/managerEmail" />
+
+    <TextView
+        android:id="@+id/label_ShopperAddress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="Address:"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/editText10"
+        app:layout_constraintEnd_toEndOf="@+id/label_ShopperPhone"
+        app:layout_constraintStart_toStartOf="@+id/label_ShopperPhone"
+        app:layout_constraintTop_toTopOf="@+id/editText10" />
+
+    <EditText
+        android:id="@+id/editText10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/shopperProfileHeader"
+        app:layout_constraintStart_toEndOf="@+id/label_ShopperAddress"
+        app:layout_constraintTop_toBottomOf="@+id/managerPhone" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="City"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/editText11"
+        app:layout_constraintEnd_toEndOf="@+id/label_ShopperPhone"
+        app:layout_constraintStart_toStartOf="@+id/label_ShopperPhone"
+        app:layout_constraintTop_toTopOf="@+id/editText11" />
+
+    <EditText
+        android:id="@+id/editText11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="City name"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/shopperProfileHeader"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/editText10" />
+</androidx.constraintlayout.widget.ConstraintLayout>
