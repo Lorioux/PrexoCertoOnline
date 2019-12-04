@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/label_ManagerPhone"
+        android:layout_width="128dp"
+        android:layout_height="0dp"
+        android:text="Phone number"
+        app:layout_constraintBottom_toBottomOf="@+id/managerPhone"
+        app:layout_constraintEnd_toEndOf="@+id/label_StoreCity"
+        app:layout_constraintStart_toStartOf="@+id/storeManagerProfileHeader"
+        app:layout_constraintTop_toTopOf="@+id/managerPhone" />
+
+    <TextView
+        android:id="@+id/label_ManagerEmail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="E-mail"
+        app:layout_constraintBottom_toBottomOf="@+id/managerEmail"
+        app:layout_constraintEnd_toEndOf="@+id/label_ManagerPhone"
+        app:layout_constraintStart_toStartOf="@+id/label_ManagerPhone"
+        app:layout_constraintTop_toTopOf="@+id/managerEmail" />
+
+    <EditText
+        android:id="@+id/managerEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/managerName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/label_ManagerEmail"
+        app:layout_constraintTop_toBottomOf="@+id/managerPhone" />
+
+    <TextView
+        android:id="@+id/storeManagerProfileHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="16dp"
+        android:text="Manager information"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <Spinner
+        android:id="@+id/spinner_ManagerTitle"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/storeManagerProfileHeader"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/label_ManagerTitle"
+        app:layout_constraintTop_toBottomOf="@+id/storeManagerProfileHeader" />
+
+    <EditText
+        android:id="@+id/managerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/storeManagerProfileHeader"
+        app:layout_constraintStart_toEndOf="@+id/label_ManagerName"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_ManagerTitle" />
+
+    <TextView
+        android:id="@+id/label_ManagerName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="First name:"
+        app:layout_constraintBottom_toBottomOf="@+id/managerName"
+        app:layout_constraintEnd_toEndOf="@+id/label_ManagerPhone"
+        app:layout_constraintStart_toStartOf="@+id/label_ManagerPhone"
+        app:layout_constraintTop_toTopOf="@+id/managerName" />
+
+    <TextView
+        android:id="@+id/label_ManagerTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Title:"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_ManagerTitle"
+        app:layout_constraintEnd_toEndOf="@+id/label_ManagerPhone"
+        app:layout_constraintStart_toStartOf="@+id/label_ManagerPhone"
+        app:layout_constraintTop_toTopOf="@+id/spinner_ManagerTitle" />
+
+    <EditText
+        android:id="@+id/managerSurname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/managerName"
+        app:layout_constraintStart_toEndOf="@+id/label_ManagerSurname"
+        app:layout_constraintTop_toBottomOf="@+id/managerName" />
+
+    <EditText
+        android:id="@+id/managerPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/managerName"
+        app:layout_constraintStart_toEndOf="@+id/label_ManagerPhone"
+        app:layout_constraintTop_toBottomOf="@+id/managerSurname" />
+</android.support.constraint.ConstraintLayout>
