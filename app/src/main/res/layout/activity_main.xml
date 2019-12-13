@@ -15,35 +15,14 @@
 
     </include>
 
-    <ViewStub
-        android:id="@+id/vstub_store_container"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/fragments_container"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout="@layout/layout_store"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inc_layout_store_products_searcher"/>
-
-    <ViewStub
-        android:id="@+id/vtub_layout_prod_snap"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout="@layout/layout_product_snap"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ViewStub
-        android:id="@+id/vstub_layout_store_manager_profile"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout="@layout/layout_store_manager_profile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/inc_layout_store_products_searcher" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

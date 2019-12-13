@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.view.View.*
-import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import online.merkatos.prexocertoonline.Entities.StoreDescriptor
 import online.merkatos.prexocertoonline.data.model.LoggedInUser
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity(),
     private var storeCategories: RecyclerView? = null
 
     /**Variable to instatiate the store menu item main view stub */
-    private var storepage: ViewStub? = null
+    private var storepage: View? = null
 
     /** */
     private var store_manager_profile: ViewStub? = null
@@ -46,97 +45,18 @@ class MainActivity : AppCompatActivity(),
         val toolbar = this.findViewById<Toolbar>(R.id.main__appBar_toolbar)
         this.setSupportActionBar(toolbar)
 
-        storepage = findViewById(R.id.vstub_store_container)
-        storepage?.visibility = VISIBLE
-
         bottomnavig = findViewById(R.id.bottomNavigationView)
-
-        /**Instantiate the store categories recycler view to layout all retrieved categories*/
-        storeCategories = findViewById(R.id.inc_layout_store_categories_recycler)
-        storeCategories?.adapter = StoreCategoriesRecyclerAdapter(this)
-        storeCategories?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        bottomnavig!!.setOnNavigationItemSelectedListener(BottomNavigationController(this, storepage))
+        bottomnavig!!.setOnNavigationItemReselectedListener {}
 
         /**Get the tooolbar child element */
         searchView = findViewById(R.id.storeProductsSearcher)
         mTitle = findViewById(R.id.app_title)
         mTitle.setOnClickListener(this)
-        //searchView.setOnClickListener(this)
-
-        /** */
-        store_manager_profile = findViewById(R.id.vstub_layout_store_manager_profile)
-
-        store_manager_profile = findViewById(R.id.vstub_layout_store_manager_profile)
 
         /**AdMob Initializer*/
-        MobileAds.initialize(this) {}
+        //MobileAds.initialize(this) {}
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        //val menu = bottomnavig!!.menu
-
-        bottomnavig!!.setOnNavigationItemSelectedListener{
-            /**Set this to handle the selected navigation menuItem */
-            val id = it.itemId
-            when(id){
-
-                R.id.menu__action_userCatogue -> {
-
-                    println("CATALOGUE CLICK: $id")
-                    findViewById<ViewStub>(R.id.container).visibility = VISIBLE
-                    true
-                }
-                R.id.menu__action_userProfile -> {
-
-                    //val activity: Class<ManagerProfileFragmentActivity> = ManagerProfileFragmentActivity::class.java
-                    val managerprofile = Intent(this, Class.forName("ManagerProfileFragmentActivity"))
-                    startActivity(managerprofile)
-
-                    println("CATALOGUE CLICK: $id")
-                    println("MENU_ITEM: $id")
-                    findViewById<ViewStub>(R.id.container).visibility = GONE
-                    true
-
-                }
-                else -> false
-            }
-        }
-
-        bottomnavig!!.setOnNavigationItemReselectedListener {
-            val id = it.itemId
-            when(id){
-
-                R.id.menu__action_userCatogue -> {
-                    println("CATALOGUE CLICK: $id")
-                    if (findViewById<ViewStub>(R.id.container).visibility == VISIBLE){
-                    }
-                }
-                else -> {
-
-                }
-            }
-        }
-
-
-        //store = StoreDescriptor(this, findViewById(R.id.container),supportFragmentManager)
-    }
-
-    /**Set the visibility of the product information files on back button pressed*/
-    override fun onBackPressed() {
-        //super.onBackPressed()
-        /*if (store.productinfo_page_one.visibility == View.VISIBLE) {
-            finish()
-        }
-        else if(store.product_snapper.visibility == VISIBLE){
-            store.product_snapper.visibility = GONE
-            store.productinfo_page_one.visibility = View.VISIBLE
-        }
-        else{
-            store.productinfo_page_two.visibility = View.GONE
-            store.productinfo_page_one.visibility = View.VISIBLE
-        }*/
     }
 
     override fun onClick(v: View?) {
@@ -152,8 +72,60 @@ class MainActivity : AppCompatActivity(),
     }
 }
 
+/**BottomNavigation item selection and reselection controller*/
+class BottomNavigationController(val main: MainActivity, val view: View?) :
+        BottomNavigationView.OnNavigationItemSelectedListener,
+        BottomNavigationView.OnNavigationItemReselectedListener {
 
-/***/
+    override fun onNavigationItemSelected(it: MenuItem): Boolean {
+        val id = it.itemId
+        return when (id) {
+
+            R.id.menu__action_storeCatalogue -> {
+                main.supportFragmentManager.beginTransaction().add(
+                        R.id.fragments_container,
+                        MyStorePage(),
+                        "StorePAGE"
+                ).commitNow()
+
+                println("CATALOGUE CLICK: $id")
+                view?.visibility = VISIBLE
+                true
+            }
+            R.id.menu__action_userProfile -> {
+
+                //val activity: Class<ManagerProfileFragmentActivity> = ManagerProfileFragmentActivity::class.java
+                val managerprofile = Intent(view?.context, Class.forName("ManagerProfileFragmentActivity"))
+
+                view?.context?.startActivity(managerprofile)
+
+                println("CATALOGUE CLICK: $id")
+                println("MENU_ITEM: $id")
+                view?.visibility = GONE
+                true
+
+            }
+            else -> false
+
+        }
+    }
+
+    override fun onNavigationItemReselected(it: MenuItem) {
+        val id = it.itemId
+        when (id) {
+
+            R.id.menu__action_storeCatalogue -> {
+                println("CATALOGUE CLICK: $id")
+                if (view?.visibility == VISIBLE) {
+                }
+            }
+            else -> {
+
+            }
+        }
+    }
+}
+
 class ManagerProfileFragmentActivity: FragmentActivity(){
 
     lateinit var registered: LoggedInUser
@@ -161,9 +133,6 @@ class ManagerProfileFragmentActivity: FragmentActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_store_manager_profile)
-
-        findViewById<ViewStub>(R.id.vstub_layout_store_manager_profile).visibility = VISIBLE
-
     }
 
     fun checkIsStoreManagerRegistired(){
@@ -173,7 +142,35 @@ class ManagerProfileFragmentActivity: FragmentActivity(){
 
 class ManagerProfileFragment: Fragment(){
 
+
+    var rootView: View? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.layout_product_mini_desc, container, false)
+        rootView = inflater.inflate(R.layout.layout_product_mini_desc, container, false)
+
+        return rootView
+    }
+
+
+}
+
+class MyStorePage : Fragment() {
+
+    private var rootView: View? = null
+    private var storeCategories: RecyclerView? = null
+    private var storepage: LinearLayout? = null
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        rootView = inflater.inflate(R.layout.layout_store, container)
+        return rootView
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        /**Instantiate the store categories recycler view to layout all retrieved categories*/
+        storeCategories = rootView?.findViewById<RecyclerView>(R.id.inc_layout_store_categories_recycler)
+        storeCategories?.adapter = StoreCategoriesRecyclerAdapter(this.requireContext())
+        storeCategories?.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
     }
 }
