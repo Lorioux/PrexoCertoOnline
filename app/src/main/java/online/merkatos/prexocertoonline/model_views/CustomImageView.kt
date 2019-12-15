@@ -60,7 +60,7 @@ class CustomImageView : ImageView {
             //Take the minimum size
             val min: Int = Math.min(vwidth, vheign) / 10
 
-            println("MINIMUM: " + min)
+            /*println("MINIMUM: " + min)
             println("MINIMUM VW: " + this.width)
             println("MINIMUM VH: " + this.height)
             println("MINIMUM VT: " + this.top)
@@ -68,7 +68,7 @@ class CustomImageView : ImageView {
             println("MINIMUM VR: " + this.right)
             println("MINIMUM VB: " + this.bottom)
             println("MINIMUM VxC: " + vxc)
-            println("MINIMUM VyC: " + vyc)
+            println("MINIMUM VyC: " + vyc)*/
 
             //Draw Lines to form a rectangle from the vertices
             val left = vxc - vwidth / 2

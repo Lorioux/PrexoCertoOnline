@@ -2,9 +2,12 @@ package online.merkatos.prexocertoonline
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
-import android.view.View.*
-import android.widget.LinearLayout
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -14,25 +17,15 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import online.merkatos.prexocertoonline.Entities.StoreDescriptor
 import online.merkatos.prexocertoonline.data.model.LoggedInUser
 
 class MainActivity : AppCompatActivity(),
         View.OnClickListener
 {
 
-    private var storeCategories: RecyclerView? = null
-
-    /**Variable to instatiate the store menu item main view stub */
-    private var storepage: View? = null
-
-    /** */
-    private var store_manager_profile: ViewStub? = null
-
     private lateinit var mTitle: TextView
     private lateinit var searchView: SearchView
-    private lateinit var prod_categ_recyclerv: RecyclerView
-    private lateinit var store: StoreDescriptor
+
 
     /**Variable to instantiate the bottom navigation view */
     private var bottomnavig: BottomNavigationView? = null
@@ -46,13 +39,21 @@ class MainActivity : AppCompatActivity(),
         this.setSupportActionBar(toolbar)
 
         bottomnavig = findViewById(R.id.bottomNavigationView)
-        bottomnavig!!.setOnNavigationItemSelectedListener(BottomNavigationController(this, storepage))
-        bottomnavig!!.setOnNavigationItemReselectedListener {}
+        bottomnavig?.inflateMenu(R.menu.manager_menu)
+        bottomnavig!!.setOnNavigationItemSelectedListener { this.navigationAction(it) }
+        //navigationMenuController(bottomnavig!!)
 
         /**Get the tooolbar child element */
         searchView = findViewById(R.id.storeProductsSearcher)
         mTitle = findViewById(R.id.app_title)
         mTitle.setOnClickListener(this)
+
+        supportFragmentManager.beginTransaction().add(
+                R.id.fragments_container,
+                MyStorePage(),
+                "StorePAGE"
+        ).commitNow()
+
 
         /**AdMob Initializer*/
         //MobileAds.initialize(this) {}
@@ -70,60 +71,23 @@ class MainActivity : AppCompatActivity(),
             return
         }
     }
-}
 
-/**BottomNavigation item selection and reselection controller*/
-class BottomNavigationController(val main: MainActivity, val view: View?) :
-        BottomNavigationView.OnNavigationItemSelectedListener,
-        BottomNavigationView.OnNavigationItemReselectedListener {
+    fun navigationAction(item: MenuItem): Boolean {
+        when (item.itemId) {
 
-    override fun onNavigationItemSelected(it: MenuItem): Boolean {
-        val id = it.itemId
-        return when (id) {
-
-            R.id.menu__action_storeCatalogue -> {
-                main.supportFragmentManager.beginTransaction().add(
-                        R.id.fragments_container,
-                        MyStorePage(),
-                        "StorePAGE"
-                ).commitNow()
-
-                println("CATALOGUE CLICK: $id")
-                view?.visibility = VISIBLE
-                true
-            }
+            R.id.menu__action_userNotify -> return true
             R.id.menu__action_userProfile -> {
 
-                //val activity: Class<ManagerProfileFragmentActivity> = ManagerProfileFragmentActivity::class.java
-                val managerprofile = Intent(view?.context, Class.forName("ManagerProfileFragmentActivity"))
-
-                view?.context?.startActivity(managerprofile)
-
-                println("CATALOGUE CLICK: $id")
-                println("MENU_ITEM: $id")
-                view?.visibility = GONE
-                true
+                val activity: Class<ManagerProfileFragmentActivity> = ManagerProfileFragmentActivity::class.java
+                val managerprofile = Intent(this, activity)
+                startActivity(managerprofile)
+                return true
 
             }
-            else -> false
-
+            else -> return false
         }
     }
 
-    override fun onNavigationItemReselected(it: MenuItem) {
-        val id = it.itemId
-        when (id) {
-
-            R.id.menu__action_storeCatalogue -> {
-                println("CATALOGUE CLICK: $id")
-                if (view?.visibility == VISIBLE) {
-                }
-            }
-            else -> {
-
-            }
-        }
-    }
 }
 
 class ManagerProfileFragmentActivity: FragmentActivity(){
@@ -156,21 +120,14 @@ class ManagerProfileFragment: Fragment(){
 
 class MyStorePage : Fragment() {
 
-    private var rootView: View? = null
-    private var storeCategories: RecyclerView? = null
-    private var storepage: LinearLayout? = null
+    private var rootView: RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater.inflate(R.layout.layout_store, container)
+        rootView = inflater.inflate(R.layout.layout_store_categories_recycler, container, false) as RecyclerView
+
+        rootView!!.adapter = StoreCategoriesRecyclerAdapter(context)
+        rootView!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
         return rootView
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        /**Instantiate the store categories recycler view to layout all retrieved categories*/
-        storeCategories = rootView?.findViewById<RecyclerView>(R.id.inc_layout_store_categories_recycler)
-        storeCategories?.adapter = StoreCategoriesRecyclerAdapter(this.requireContext())
-        storeCategories?.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
     }
 }

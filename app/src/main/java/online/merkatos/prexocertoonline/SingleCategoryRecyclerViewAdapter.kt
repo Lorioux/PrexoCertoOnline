@@ -2,16 +2,16 @@ package online.merkatos.prexocertoonline
 
 import android.content.Context
 import android.content.res.Resources
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.RecyclerView
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.RecyclerView
 
-class SingleCategoryRecyclerViewAdapter(c: Context) : RecyclerView.Adapter<SingleCategoryRecyclerViewAdapter.ViewHolder>() {
+class SingleCategoryRecyclerViewAdapter(c: Context?) : RecyclerView.Adapter<SingleCategoryRecyclerViewAdapter.ViewHolder>() {
 
-    val c: Context
+    var c: Context? = null
     var numberofItems: Int
 
     init {
@@ -50,7 +50,7 @@ class SingleCategoryRecyclerViewAdapter(c: Context) : RecyclerView.Adapter<Singl
         }
     }
 
-    class ViewHolder(v: View, c: Context): RecyclerView.ViewHolder(v){
+    class ViewHolder(v: View, c: Context?) : RecyclerView.ViewHolder(v) {
 
         var marginpx: Float
         private var res: Resources
@@ -66,7 +66,7 @@ class SingleCategoryRecyclerViewAdapter(c: Context) : RecyclerView.Adapter<Singl
                     ViewGroup.LayoutParams.WRAP_CONTENT
             )
 
-            res = c.resources
+            res = c!!.resources
             /**Convert 16dp in px for margin*/
             marginpx = TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP,

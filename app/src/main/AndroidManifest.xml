@@ -41,12 +41,12 @@
 
         </activity>
 
-        <!--<meta-data
+        <meta-data
             android:name="GooglePlayMap"
-            android:value="AIzaSyDvxIPFE2ZGbv2tMgg9GadVeorwxsKvpHc" /> &lt;!&ndash; AIzaSyDvxIPFE2ZGbv2tMgg9GadVeorwxsKvpHc &ndash;&gt;
+            android:value="AIzaSyDvxIPFE2ZGbv2tMgg9GadVeorwxsKvpHc" /> <!-- AIzaSyDvxIPFE2ZGbv2tMgg9GadVeorwxsKvpHc -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-6512186262356871~6568920742" />-->
+            android:value="ca-app-pub-6512186262356871~6568920742" />
     </application>
 
 </manifest>
