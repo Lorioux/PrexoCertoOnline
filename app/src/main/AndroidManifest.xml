@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> -->
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature
         android:name="android.hardware.SensorManager"
         android:required="true" />
@@ -38,6 +41,18 @@
         </activity>
 
         <activity android:name=".ManagerProfileFragmentActivity">
+
+        </activity>
+
+        <activity
+            android:name=".ProductImagingActivity"
+            android:parentActivityName=".RegistryProducts">
+
+        </activity>
+
+        <activity
+            android:name=".RegistryProducts"
+            android:parentActivityName=".MainActivity">
 
         </activity>
 

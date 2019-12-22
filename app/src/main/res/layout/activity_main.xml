@@ -15,7 +15,7 @@
 
     </include>
 
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout
         android:id="@+id/fragments_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -24,7 +24,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inc_layout_store_products_searcher">
 
-    </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+
+    <ViewStub
+        android:id="@+id/vstub_search_suggestionsrecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout="@layout/layout_store_categories_recycler"
+        app:layout_constraintBottom_toBottomOf="@+id/fragments_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inc_layout_store_products_searcher" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -32,6 +42,7 @@
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:menu="@menu/manager_bottom_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

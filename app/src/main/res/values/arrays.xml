@@ -20,9 +20,51 @@
     </string-array>
 
     <string-array name="user_profile_titles">
-        <item>Mrs.</item>
+        <item>Ms.</item>
         <item>Miss</item>
         <item>Mr.</item>
         <item>Sr.</item>
+    </string-array>
+
+    <!--Business and manager profile entries-->
+    <string-array name="pref_store_manager_info">
+        <item>Full name</item>
+        <item>Phone number</item>
+        <item>Email</item>
+    </string-array>
+    <string-array name="pref_store_info">
+        <item>Company name</item>
+        <item>Address</item>
+        <item>City</item>
+    </string-array>
+
+    <!--Business and manager profile entries values-->
+    <string-array name="pref_store_manager_info_values">
+        <item>Mayang Makrany</item>
+        <item>+258 846 xxx xxxx</item>
+        <item>mm@store.com</item>
+    </string-array>
+    <string-array name="pref_store_info_values">
+        <item>Store</item>
+        <item>Av. 25 de Setembro</item>
+        <item>Cidade de Nampula</item>
+    </string-array>
+
+    <!--Profile registry status-->
+    <string-array name="pref_profile_registry_status">
+        <item>Unregistered</item>
+        <item>Pending</item>
+        <item>Registered</item>
+        <item>Active</item>
+        <item>Inactive</item>
+    </string-array>
+
+
+    <!--Product display filter-->
+    <string-array name="productDisplayFilter">
+        <item>Price max - min</item>
+        <item>Price min - max</item>
+        <item>A-Z</item>
+        <item>Z-A</item>
     </string-array>
 </resources>

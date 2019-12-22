@@ -1,75 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:nestedScrollingEnabled="true"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
-    app:layout_constraintTop_toTopOf="parent">
+    android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginEnd="16dp"
-        android:background="@android:color/transparent"
-        android:gravity="center_vertical"
-        android:text="999+"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageView" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
-        android:layout_width="wrap_content"
+    <include
+        layout="@layout/layout_store_single_category"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/appCompatTextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_thumb_up_24px" />
+        android:layout_gravity="top"
+        android:layout_marginTop="72dp" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/storeAdvsControler"
-        android:layout_width="128dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/storeCatalogueControler"
-        app:layout_constraintStart_toEndOf="@+id/storeCatalogueControler"
-        app:layout_constraintTop_toTopOf="@+id/storeCatalogueControler">
-
-        <TextView
-            android:id="@+id/myAdvs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Advertisements" />
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/storeCatalogueControler"
-        android:layout_width="128dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:nestedScrollingEnabled="true"
+        android:paddingTop="8dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/myCatalogue"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:text="999+"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Catalogue" />
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toStartOf="@+id/appCompatTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_thumb_up_24px" />
 
-    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/storeCatalogueControler"
+            android:layout_width="128dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/myCatalogue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Catalogue" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/storeAdvsControler"
+            android:layout_width="128dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/storeCatalogueControler"
+            app:layout_constraintStart_toEndOf="@+id/storeCatalogueControler"
+            app:layout_constraintTop_toTopOf="@+id/storeCatalogueControler">
+
+            <TextView
+                android:id="@+id/myAdvs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Advertisements" />
+        </androidx.cardview.widget.CardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

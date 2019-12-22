@@ -1,18 +1,14 @@
 package online.merkatos.prexocertoonline.Entities
 
 import android.content.Context
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewStub
 import android.widget.Button
 import android.widget.ImageView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import online.merkatos.prexocertoonline.R
-import online.merkatos.prexocertoonline.models.CatalogueCreatorPagerFragment
 
 open class StoreDescriptor(context: Context, container: View, fm: FragmentManager): View.OnClickListener{
 
@@ -51,10 +47,10 @@ open class StoreDescriptor(context: Context, container: View, fm: FragmentManage
     }
 
     init {
-        view.findViewById<ImageView>(R.id.imageView).setOnClickListener(this)
-        view.findViewById<ImageView>(R.id.imageView2).setOnClickListener(this)
-        view.findViewById<ImageView>(R.id.imageView3).setOnClickListener(this)
-        view.findViewById<Button>(R.id.button).setOnClickListener(this)
+        view.findViewById<ImageView>(R.id.main_productImage).setOnClickListener(this)
+        view.findViewById<ImageView>(R.id.second_productImage).setOnClickListener(this)
+        view.findViewById<ImageView>(R.id.third_productImage).setOnClickListener(this)
+        view.findViewById<Button>(R.id.productInfoNextPage).setOnClickListener(this)
     }
 
     fun setUpStoreFragments(fm: FragmentManager){
@@ -71,7 +67,7 @@ open class StoreDescriptor(context: Context, container: View, fm: FragmentManage
     override fun onClick(v: View?) {
 
         //Set the visibility of the product description form
-        if (v!!.id == R.id.button){
+        if (v!!.id == R.id.productInfoNextPage) {
 
             productinfo_page_two.visibility = View.VISIBLE
             productinfo_page_one.visibility = View.GONE
@@ -80,7 +76,7 @@ open class StoreDescriptor(context: Context, container: View, fm: FragmentManage
         }
 
         /**Set to open the camera preview */
-        val images = intArrayOf(R.id.imageView, R.id.imageView2, R.id.imageView3)
+        val images = intArrayOf(R.id.main_productImage, R.id.second_productImage, R.id.third_productImage)
         when(v.id){
             in images -> {
                 productinfo_page_one.visibility = View.GONE

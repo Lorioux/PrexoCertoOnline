@@ -4,4 +4,31 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
+
+    <!--Business and manager information values-->
+    <string name="manager_info">Manager information</string>
+    <string name="manager_info_name_key">ManagerFullName</string>
+    <string name="manager_name_title">Full name</string>
+    <string name="manager_name">John Doe</string>
+    <string name="manager_info_phone_key">ManagerPhoneNumber</string>
+    <string name="manager_phone_title">Phone number</string>
+    <string name="manager_phone">+258 846 xxx xxxx</string>
+    <string name="manager_info_email_key">ManagerEmail</string>
+    <string name="manager_email_title">Email</string>
+    <string name="manager_email">manager@store.xyz</string>
+    <string name="business_info">Company information</string>
+    <string name="company_information">Company information</string>
+    <string name="company_name">Store ltd</string>
+    <string name="company_info_name_key">CompanyName</string>
+    <string name="company_name_title">Company name</string>
+    <string name="company_address">Av. 25 de Setembro 69</string>
+    <string name="company_info_address_key">CompanyAddress</string>
+    <string name="company_phone_title">Address</string>
+    <string name="company_city">Nampula</string>
+    <string name="company_info_city_key">CompanyCity</string>
+    <string name="company_city_title">City</string>
+    <string name="profile_status_value">Unregistered</string>
+    <string name="profile_status_key">ProfileRegistryStatus</string>
+    <string name="profile_status_title">Status</string>
+    <string name="app_title">Preço Certo Online</string>
 </resources>

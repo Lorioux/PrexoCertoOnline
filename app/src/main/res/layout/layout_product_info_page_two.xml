@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/productCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -15,15 +16,14 @@
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/categoryLabel"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/imagesLabel"
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray"
         android:gravity="center_vertical"
         android:paddingStart="16dp"
         android:text="Detalhes"
@@ -32,10 +32,10 @@
         app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/productQtty" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/productSubCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -45,63 +45,69 @@
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/productCategory"
+        app:layout_constraintTop_toBottomOf="@+id/productCategory" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/subcategoryLabel"
         android:layout_width="0dp"
         android:layout_height="43dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="Subcategory:"
         android:textAlignment="viewEnd"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/productSubCategory"
+        app:layout_constraintEnd_toEndOf="@+id/categoryLabel"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/editText2"
+        app:layout_constraintTop_toTopOf="@+id/productSubCategory"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/categoryLabel"
         android:layout_width="100dp"
         android:layout_height="43dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="Category:"
         android:textAlignment="viewEnd"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="@+id/productCategory"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/editText"
+        app:layout_constraintTop_toTopOf="@+id/productCategory"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/main.productDetails"
         android:layout_width="0dp"
-        android:layout_height="256dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         android:allowUndo="true"
         android:ems="10"
         android:gravity="top"
         android:hint="Ex.: nutricional information, color, origin, manufacturer, etc."
         android:inputType="textMultiLine"
-        android:lineSpacingExtra="10sp"
+        android:lineSpacingExtra="8sp"
+        android:lines="5"
+        android:maxLines="128"
+        android:minLines="15"
+        android:paddingStart="16dp"
         android:scaleType="fitXY"
         android:singleLine="false"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintBottom_toTopOf="@+id/main.productSubmitRegistry"
+        app:layout_constraintEnd_toEndOf="@+id/imagesLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imagesLabel"
+        app:layout_constraintTop_toBottomOf="@+id/imagesLabel"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:background="@android:color/darker_gray"
         android:gravity="center_vertical"
         android:paddingStart="16dp"
         android:text="Additional information"
@@ -110,25 +116,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/quantityLabel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="Quantity:"
         android:textAlignment="viewEnd"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/productQtty"
+        app:layout_constraintEnd_toEndOf="@+id/categoryLabel"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/editText3"
+        app:layout_constraintTop_toTopOf="@+id/productQtty"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/productQtty"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -136,13 +142,13 @@
         android:hint="0.0"
         android:inputType="number"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText4"
+        app:layout_constraintEnd_toStartOf="@+id/productQttyUnits"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintStart_toStartOf="@+id/productCategory"
+        app:layout_constraintTop_toBottomOf="@+id/productSubCategory" />
 
     <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/editText4"
+        android:id="@+id/productQttyUnits"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:dropDownWidth="wrap_content"
@@ -152,19 +158,19 @@
         android:text="Litres"
         android:textAlignment="viewStart"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
+        app:layout_constraintBottom_toBottomOf="@+id/productQtty"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
-        app:layout_constraintTop_toTopOf="@+id/editText3"
+        app:layout_constraintStart_toEndOf="@+id/productQtty"
+        app:layout_constraintTop_toTopOf="@+id/productQtty"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/main.productSubmitRegistry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="111dp"
         android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imagesLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:showIn="@layout/layout_store_manager_profile">
+    android:background="@android:color/holo_orange_light">
 
     <TextView
         android:id="@+id/shopperProfileHeader"
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="16dp"
         android:gravity="center_vertical"
         android:text="Manager profile information"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +27,8 @@
         android:layout_height="0dp"
         android:gravity="center_vertical"
         android:text="Title:"
-        android:textAlignment="viewEnd"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/spinner_ManagerTitle"
         app:layout_constraintStart_toStartOf="@+id/shopperProfileHeader"
         app:layout_constraintTop_toTopOf="@+id/spinner_ManagerTitle" />
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:dropDownWidth="wrap_content"
         android:entries="@array/user_profile_titles"
         app:layout_constraintEnd_toEndOf="@+id/shopperProfileHeader"
@@ -50,13 +50,11 @@
         android:id="@+id/managerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="First name"
         android:inputType="textPersonName"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/shopperProfileHeader"
         app:layout_constraintStart_toStartOf="@+id/shopperProfileHeader"
         app:layout_constraintTop_toBottomOf="@+id/spinner_ManagerTitle" />
@@ -69,7 +67,7 @@
         android:ems="10"
         android:hint="Last name"
         android:inputType="textPersonName"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/managerName"
         app:layout_constraintStart_toStartOf="@+id/managerName"
         app:layout_constraintTop_toBottomOf="@+id/managerName" />
@@ -82,7 +80,7 @@
         android:ems="10"
         android:hint="(+258)"
         android:inputType="textPhonetic"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/managerName"
         app:layout_constraintStart_toStartOf="@+id/managerName"
         app:layout_constraintTop_toBottomOf="@+id/managerSurname" />
@@ -95,17 +93,18 @@
         android:ems="10"
         android:hint="manager@store.com"
         android:inputType="textEmailAddress"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/managerName"
         app:layout_constraintStart_toStartOf="@+id/managerName"
         app:layout_constraintTop_toBottomOf="@+id/managerPhone" />
 
     <Button
-        android:id="@+id/shopperProfileSaver"
+        android:id="@+id/submitProfileRegistry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:enabled="true"
         android:text="submit"
         app:layout_constraintEnd_toEndOf="@+id/shopperProfileHeader"
         app:layout_constraintTop_toBottomOf="@+id/managerEmail" />

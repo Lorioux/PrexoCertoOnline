@@ -2,12 +2,12 @@ package online.merkatos.prexocertoonline.models
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import online.merkatos.prexocertoonline.R
 
 @SuppressLint("ValidFragment")
@@ -29,7 +29,7 @@ open class CatalogueCreatorPagerFragment(): Fragment(){
 
             2 -> inflater.inflate(R.layout.layout_store_single_category, container, false)
 
-            else -> inflater.inflate(R.layout.layout_prod_registry, container, false)
+            else -> inflater.inflate(R.layout.layout_product_registry, container, false)
         }
     }
 
@@ -61,11 +61,11 @@ class CatalogueCreatorPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(f
         //return super.instantiateItem(container, position)
         return  when(position){
             0 -> {
-                fm!!.beginTransaction().add(this.getItem(position), "ViewPager").commitNow()
+                fm.beginTransaction().add(this.getItem(position), "ViewPager").commitNow()
                 startUpdate(container)
             }
             else -> {
-                fm!!.beginTransaction().add(this.getItem(position), "ViewPager").commitNow()
+                fm.beginTransaction().add(this.getItem(position), "ViewPager").commitNow()
                 return startUpdate(container)
             }
         }

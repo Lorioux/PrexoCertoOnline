@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/productBrandName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -14,13 +15,14 @@
         android:ems="10"
         android:hint="Bohmia"
         android:inputType="textPersonName"
+        android:singleLine="true"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/brandLabel"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/imagesLabel"
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
@@ -32,82 +34,83 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/productPrice" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/productType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Wine"
         android:inputType="textPersonName"
+        android:singleLine="true"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toEndOf="@+id/typeLabel"
+        app:layout_constraintStart_toStartOf="@+id/productBrandName"
+        app:layout_constraintTop_toBottomOf="@+id/productBrandName" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/typeLabel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="Product type:"
         android:textAlignment="viewEnd"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/productType"
+        app:layout_constraintEnd_toEndOf="@+id/brandLabel"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/editText2"
+        app:layout_constraintTop_toTopOf="@+id/productType"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/brandLabel"
         android:layout_width="100dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="Product brand name:"
         android:textAlignment="viewEnd"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="@+id/productBrandName"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/editText"
+        app:layout_constraintTop_toTopOf="@+id/productBrandName"
         app:layout_constraintVertical_bias="0.0" />
 
     <online.merkatos.prexocertoonline.model_views.CustomImageView
-        android:id="@+id/imageView"
+        android:id="@+id/main.productImage"
         android:layout_width="156dp"
         android:layout_height="256dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/imagesLabel"
+        app:layout_constraintTop_toBottomOf="@+id/imagesLabel"
         tools:srcCompat="@tools:sample/backgrounds/scenic" /> <!--
         app:srcCompat="@drawable/ic_launcher_background"-->
 
     <online.merkatos.prexocertoonline.model_views.CustomImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/second.productImage"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imagesLabel"
+        app:layout_constraintStart_toEndOf="@+id/main.productImage"
+        app:layout_constraintTop_toTopOf="@+id/main.productImage"
         tools:srcCompat="@tools:sample/backgrounds/scenic" /> <!--
         app:srcCompat="@drawable/ic_launcher_background"-->
 
     <online.merkatos.prexocertoonline.model_views.CustomImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/third.productImage"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/main.productImage"
+        app:layout_constraintEnd_toEndOf="@+id/imagesLabel"
+        app:layout_constraintStart_toEndOf="@+id/main.productImage"
         tools:srcCompat="@tools:sample/backgrounds/scenic" /> <!--
         app:srcCompat="@drawable/ic_launcher_background"-->
 
@@ -125,44 +128,44 @@
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:height="46dp"
-        android:background="@android:color/darker_gray"
         android:gravity="center_vertical"
-        android:paddingStart="16dp"
+        android:paddingStart="8dp"
         android:text="Product information"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/priceLabel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="Product price:"
         android:textAlignment="viewEnd"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="@+id/productPrice"
+        app:layout_constraintEnd_toEndOf="@+id/typeLabel"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/editText3" />
+        app:layout_constraintTop_toTopOf="@+id/productPrice" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/productPrice"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="0.00"
         android:inputType="textPersonName"
+        android:singleLine="true"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintStart_toStartOf="@+id/productBrandName"
+        app:layout_constraintTop_toBottomOf="@+id/productType" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/priceCurrency"
@@ -175,19 +178,18 @@
         android:text="EUR"
         android:textAlignment="viewStart"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
+        app:layout_constraintBottom_toBottomOf="@+id/productPrice"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
-        app:layout_constraintTop_toTopOf="@+id/editText3" />
+        app:layout_constraintStart_toEndOf="@+id/productPrice"
+        app:layout_constraintTop_toTopOf="@+id/productPrice" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/productInfoNextPage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:text="Next"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="@id/third.productImage"
+        app:layout_constraintTop_toBottomOf="@id/main.productImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

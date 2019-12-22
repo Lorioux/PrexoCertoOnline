@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
     <ViewStub
         android:id="@+id/vstub_layout_product_info_page_one"
         android:layout="@layout/layout_product_info_page_one"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
     <ViewStub
         android:id="@+id/vstub_layout_product_info_page_two"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout="@layout/layout_product_info_page_two"/>
 
-</LinearLayout>
+    <ViewStub
+        android:id="@+id/vstub_layout_camera_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/layout_camera_surface" />
+
+</FrameLayout>

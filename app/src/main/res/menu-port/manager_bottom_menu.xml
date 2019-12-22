@@ -3,23 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu._action_storeCatalogue"
+        android:id="@+id/storeCatalogue"
         android:enabled="true"
         android:icon="@drawable/ic_store_black_24dp"
         android:title="My Store"
-        app:showAsAction="always" />
+        app:showAsAction="always" /><!--android:onClick="bottomMenuController"-->
     <item
-        android:id="@+id/menu._action_userNotify"
+        android:id="@+id/userNotify"
         android:enabled="true"
         android:icon="@drawable/ic_notifications_none_black_24dp"
         android:title="Notifications"
         android:visible="true"
-        app:showAsAction="always" />
+        app:showAsAction="always" /><!--android:onClick="bottomMenuController"-->
     <item
-        android:id="@+id/menu._action_userProfile"
+        android:id="@+id/userProfile"
         android:enabled="true"
         android:icon="@drawable/ic_person_outline_black_24dp"
         android:title="My Profile"
-        android:visible="true"
-        app:showAsAction="always" />
+        app:showAsAction="always" /><!--bandroid:onClick="bottomMenuController"-->
 </menu>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:divider="#ffccdd"
+    android:persistent="true">
+
+    <PreferenceCategory android:title="@string/manager_info">
+
+        <Preference
+            android:defaultValue="@string/manager_name"
+            android:key="@string/manager_info_name_key"
+            android:summary="@string/manager_name"
+            android:title="@string/manager_name_title" />
+        <Preference
+            android:defaultValue="@string/manager_phone"
+            android:key="@string/manager_info_phone_key"
+            android:summary="@string/manager_phone"
+            android:title="@string/manager_phone_title" />
+        <Preference
+            android:defaultValue="@string/manager_email"
+            android:key="@string/manager_info_email_key"
+            android:summary="@string/manager_email"
+            android:title="@string/manager_email_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/business_info">
+        <Preference
+            android:defaultValue="@string/company_name"
+            android:key="@string/company_info_name_key"
+            android:summary="@string/company_name"
+            android:title="@string/company_name_title" />
+        <Preference
+            android:defaultValue="@string/company_address"
+            android:key="@string/company_info_address_key"
+            android:summary="@string/company_address"
+            android:title="@string/company_phone_title" />
+        <Preference
+            android:defaultValue="@string/company_city"
+            android:key="@string/company_info_city_key"
+            android:summary="@string/company_city"
+            android:title="@string/company_city_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Profile registry status">
+        <Preference
+            android:defaultValue="@string/profile_status_value"
+            android:key="@string/profile_status_key"
+            android:summary="@string/profile_status_value"
+            android:title="@string/profile_status_title" />
+    </PreferenceCategory>
+</PreferenceScreen>

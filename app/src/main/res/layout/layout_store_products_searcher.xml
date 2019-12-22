@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main._appBar_toolbar"
     android:layout_width="match_parent"
     android:layout_height="72dp"
     android:background="@android:color/holo_orange_light">
@@ -13,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
+            android:id="@+id/main.toolbar_backgroud_cv"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginEnd="16dp"
@@ -27,15 +25,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="false"
-                android:text="Preço Certo Online"
+                android:text="@string/app_title"
                 android:textColor="#F9CCCCCC"
                 android:textSize="18sp" />
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/storeProductsSearcher"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:iconifiedByDefault="true" />
+                android:layout_height="match_parent" />
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
