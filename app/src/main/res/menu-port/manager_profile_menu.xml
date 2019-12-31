@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/ic_catalogue_black_24dp"
+        android:orderInCategory="1001"
+        android:title="Catalogue"
+        app:showAsAction="always" />
+    <item
+        android:icon="@drawable/ic_local_advs_black_24dp"
+        android:orderInCategory="1002"
+        android:title="Advertisements"
+        app:showAsAction="always" />
+    <item
+        android:icon="@drawable/ic_notifications_none_black_24dp"
+        android:orderInCategory="1003"
+        android:title="Notifications"
+        android:visible="true"
+        app:showAsAction="always" />
+</menu>

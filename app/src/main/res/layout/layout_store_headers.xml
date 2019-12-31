@@ -37,54 +37,63 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appCompatImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="18dp"
+            android:layout_height="20dp"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/appCompatTextView"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_thumb_up_24px" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/storeCatalogueControler"
-            android:layout_width="128dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardMaxElevation="2dp"
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
 
-            <TextView
-                android:id="@+id/myCatalogue"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Catalogue" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/storeCatalogueControler"
+                    android:layout_width="128dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="16dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:cardMaxElevation="2dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/storeAdvsControler"
-            android:layout_width="128dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardMaxElevation="2dp"
-            app:layout_constraintBottom_toBottomOf="@+id/storeCatalogueControler"
-            app:layout_constraintStart_toEndOf="@+id/storeCatalogueControler"
-            app:layout_constraintTop_toTopOf="@+id/storeCatalogueControler">
+                    <TextView
+                        android:id="@+id/myCatalogue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Catalogue" />
 
-            <TextView
-                android:id="@+id/myAdvs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Advertisements" />
-        </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/storeAdvsControler"
+                    android:layout_width="128dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="16dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:cardMaxElevation="2dp">
+
+                    <TextView
+                        android:id="@+id/myAdvs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Advertisements" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </HorizontalScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

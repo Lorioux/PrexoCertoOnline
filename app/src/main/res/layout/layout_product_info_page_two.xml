@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/productCategory" />
 
     <TextView
-        android:id="@+id/subcategoryLabel"
+        android:id="@+id/subCategoryLabel"
         android:layout_width="0dp"
         android:layout_height="43dp"
         android:gravity="center_horizontal|center_vertical"
@@ -64,10 +64,11 @@
 
     <TextView
         android:id="@+id/categoryLabel"
-        android:layout_width="100dp"
-        android:layout_height="43dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Category:"
+        android:paddingStart="16dp"
+        android:text="Product category:"
         android:textAlignment="viewEnd"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/productCategory"

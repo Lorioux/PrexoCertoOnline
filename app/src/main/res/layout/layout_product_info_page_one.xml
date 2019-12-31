@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/productPrice" />
 
     <EditText
-        android:id="@+id/productType"
+        android:id="@+id/productName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -47,30 +47,31 @@
         android:singleLine="true"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/typeLabel"
+        app:layout_constraintStart_toEndOf="@+id/productNameLabel"
         app:layout_constraintStart_toStartOf="@+id/productBrandName"
         app:layout_constraintTop_toBottomOf="@+id/productBrandName" />
 
     <TextView
-        android:id="@+id/typeLabel"
+        android:id="@+id/productNameLabel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Product type:"
+        android:text="Product name:"
         android:textAlignment="viewEnd"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/productType"
+        app:layout_constraintBottom_toBottomOf="@+id/productName"
         app:layout_constraintEnd_toEndOf="@+id/brandLabel"
         app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/productType"
+        app:layout_constraintTop_toTopOf="@+id/productName"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/brandLabel"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Product brand name:"
+        android:paddingStart="16dp"
+        android:text="Product brand:"
         android:textAlignment="viewEnd"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/productBrandName"
@@ -150,7 +151,7 @@
         android:textAlignment="viewEnd"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/productPrice"
-        app:layout_constraintEnd_toEndOf="@+id/typeLabel"
+        app:layout_constraintEnd_toEndOf="@+id/productNameLabel"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/productPrice" />
 
@@ -165,7 +166,7 @@
         android:singleLine="true"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/productBrandName"
-        app:layout_constraintTop_toBottomOf="@+id/productType" />
+        app:layout_constraintTop_toBottomOf="@+id/productName" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/priceCurrency"

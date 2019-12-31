@@ -1,18 +1,26 @@
 package online.merkatos.prexocertoonline
 
+import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.hardware.camera2.CameraManager
 import android.os.AsyncTask
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.provider.MediaStore
 import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import java.io.File
+import java.io.IOException
+import kotlin.math.abs
 
 class SingleCategoryWithTypeRecyclerViewAdapter(c: Context?) : RecyclerView.Adapter<SingleCategoryWithTypeRecyclerViewAdapter.ViewHolder>() {
     lateinit var gridisplayadapter: android.widget.ListAdapter
@@ -141,10 +149,12 @@ class SingleGridDisplayAdapter : android.widget.ListAdapter, BaseAdapter() {
 
 class RegistryProducts : AppCompatActivity() {
 
+    private lateinit var currentPhotoPath: String
     //Code to use for camera intent call
-    private val MAIN_IMAGE_CODE: Int = R.id.main_productImage
-    private val SECD_IMAGE_CODE: Int = R.id.second_productImage
-    private val THIRD_IMAGE_CODE: Int = R.id.third_productImage
+    private val RES_CODE: Int = 100
+    private val MAIN_IMAGE_CODE: Int = abs(R.id.main_productImage.shr(16))
+    private val SECD_IMAGE_CODE: Int = abs(R.id.second_productImage.shr(16))
+    private val THIRD_IMAGE_CODE: Int = abs(R.id.third_productImage.shr(16))
 
     private lateinit var cameramanager: CameraManager
     private lateinit var camerasurface: SurfaceView
@@ -185,7 +195,6 @@ class RegistryProducts : AppCompatActivity() {
         page_one_content = mapOf()
         page_two_content = mapOf()
 
-        cameramanager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
 
     }
 
@@ -210,7 +219,7 @@ class RegistryProducts : AppCompatActivity() {
 
         if (visibility == View.VISIBLE) {
             brandname = findViewById(R.id.productBrandName)
-            type = findViewById(R.id.productType)
+            type = findViewById(R.id.productName)
             price = findViewById(R.id.productPrice)
             val priceCurrency = findViewById<Spinner>(R.id.priceCurrency)
 
@@ -307,17 +316,65 @@ class RegistryProducts : AppCompatActivity() {
     val imagelistener = View.OnClickListener {
 
 
-        //window.navigationBarColor = getColor(android.R.color.transparent)
-        //window.statusBarColor = getColor(android.R.color.)
+        val reqcode: Int = abs(it.id.shr(16))
+        val productname = brandname.text.toString()
+        val permission = checkSelfPermission(Manifest.permission.CAMERA)
+        if (permission == PackageManager.PERMISSION_DENIED) {
+            requestPermissions(
+                    arrayOf(Manifest.permission.CAMERA),
+                    1001
+            )
+        } else {
+            //Check the product name field if not empty
+            productname.isBlank().run {
+                when (this) {
 
-        //camerapage.visibility = View.VISIBLE
+                    true -> {
+                        Toast.makeText(baseContext, "You are required to fill the product brand name field to proceed!", Toast.LENGTH_SHORT).show()/**/
+                        return@OnClickListener
+                    }
+                    else -> takePicture(reqcode, productname)
+                }
+            }
+        }
 
-        //camerasurface = findViewById<SurfaceView>(R.id.main_camerasurface)
+        //Toast.makeText(baseContext, "List of ids: ${reqcode}", Toast.LENGTH_LONG).show()
 
-        val camera = Intent(this, ProductImagingActivity::class.java)
-        startActivityForResult(camera, 1001)
+    }
 
-        Toast.makeText(baseContext, "List of ids: ${cameramanager.cameraIdList.size}", Toast.LENGTH_LONG).show()
+    private fun takePicture(reqcode: Int, productname: String) {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also {
+
+            takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager).also {
+
+                val photoFile: File? = try {
+
+                    createImageFile(reqcode, productname)
+
+                } catch (ex: IOException) {
+
+                    System.err.println(ex.message)
+                    null
+                }
+
+                photoFile?.also {
+                    FileProvider.getUriForFile(
+                            baseContext,
+                            getString(R.string.app_authority),
+                            it
+                    ).apply {
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, this)
+                    }
+                }
+
+            }.run {
+
+                startActivityForResult(takePictureIntent, reqcode)
+
+            }
+
+        }
 
     }
 
@@ -326,27 +383,85 @@ class RegistryProducts : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
         super.onActivityResult(requestCode, resultCode, data)
 
-        when (requestCode) {
+        if (resultCode == Activity.RESULT_OK) {
+
+            when (requestCode) {
+
+                MAIN_IMAGE_CODE -> setProductImage(main_productImage, currentPhotoPath)
+
+                SECD_IMAGE_CODE -> setProductImage(second_productImage, currentPhotoPath)
+
+                THIRD_IMAGE_CODE -> setProductImage(third_productImage, currentPhotoPath)
+
+            }
+        }
+
+    }
+
+    private fun setProductImage(imageplaceholder: ImageView, currentPhotoPath: String) {
+        val image = BitmapFactory.decodeFile(currentPhotoPath)
+        imageplaceholder.setImageBitmap(image)
+    }
+
+    class productImageProcessorAsynTask(val imageplaceholder: ImageView) : AsyncTask<String, Any, Bitmap>() {
+
+        override fun doInBackground(vararg params: String): Bitmap {
+            return BitmapFactory.decodeFile(params.get(0))
+        }
+
+        override fun onPostExecute(result: Bitmap?) {
+            result ?: apply {
+                imageplaceholder.setImageBitmap(result)
+            }
+        }
+    }
+
+    @Throws(IOException::class)
+    private fun createImageFile(reqcode: Int, productname: String): File? {
+
+        //val timestamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+
+        val productImageFileDir = File(filesDir, "images/${productname}/")
+
+        return when (reqcode) {
+
             MAIN_IMAGE_CODE -> {
-
-                val drawable = data?.getSerializableExtra("image") as Drawable
-
-                main_productImage.setImageDrawable(drawable)
+                buildImageFileName("main", productImageFileDir)
             }
 
             SECD_IMAGE_CODE -> {
-                val drawable = data?.getSerializableExtra("image") as Drawable
-
-                second_productImage.setImageDrawable(drawable)
+                buildImageFileName("second", productImageFileDir)
             }
 
             THIRD_IMAGE_CODE -> {
-                val drawable = data?.getSerializableExtra("image") as Drawable
-
-                third_productImage.setImageDrawable(drawable)
+                buildImageFileName("third", productImageFileDir)
             }
+            else -> null
+        }
+
+    }
+
+    private fun buildImageFileName(prefix: String, dir: File): File {
+        return when (dir.isDirectory) {
+            true -> createFileDirectory(prefix, dir)
+            else -> {
+                dir.mkdir(); createFileDirectory(prefix, dir)
+            }
+        }
+    }
+
+    //Create temporary image files to host the retrieved image from camera call
+    fun createFileDirectory(prefix: String, dir: File): File {
+
+        return File.createTempFile(
+                "${prefix}",
+                ".tmp",
+                dir.normalize()
+        ).also {
+            currentPhotoPath = it.absolutePath
         }
     }
 
@@ -378,8 +493,6 @@ class RegistryProducts : AppCompatActivity() {
     //define an asynctask class to manage the collection of the inserted information on the registry
     inner class RegistryPageTwoManagementAsyncTask : AsyncTask<View, Any, Any>() {
 
-        val productregistry = ("")
-
         override fun doInBackground(vararg params: View?): Any {
 
             val rootview = params.get(0)
@@ -399,23 +512,4 @@ class RegistryProducts : AppCompatActivity() {
         }
     }
 }
-
-class ProductImagingActivity : AppCompatActivity() {
-
-    private lateinit var camerasurface: SurfaceView
-    private lateinit var incomingintennt: Intent
-    //private lateinit var cameramanager: CameraManager
-
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        setContentView(R.layout.layout_camera_surface)
-
-        camerasurface = findViewById(R.id.main_camerasurface)
-
-        //cameramanager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
-
-        //incomingintennt =  intent
-
-    }
-
-}
+//class FileProvider: FileP

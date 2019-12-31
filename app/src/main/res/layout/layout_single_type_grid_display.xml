@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Drinks"
+            android:text="Drink"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
-            android:text="Adicionar"
+            android:text="Add product"
             android:textColor="@android:color/darker_gray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/singleProductsTypeHeader"
